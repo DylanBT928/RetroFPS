@@ -64,6 +64,8 @@ APooledObject* UObjectPools::SpawnPooledObject()
 			PoolableActor->SetLifeSpan(PooledObjectLifeSpan);
 			PoolableActor->SetActive(true);
 			SpawnedPoolIndexes.Add(PoolableActor->GetPoolIndex());
+
+			return PoolableActor;
 		}
 	}
 	
