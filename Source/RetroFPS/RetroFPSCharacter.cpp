@@ -1,5 +1,4 @@
-#include "RetroFPSCharacter.h"
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright 2023 Dylan Tran All Rights Reserved.
 
 
 #include "RetroFPSCharacter.h"
