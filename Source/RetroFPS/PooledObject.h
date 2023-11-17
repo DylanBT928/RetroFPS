@@ -4,7 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Delegates/Delegate.h"
 #include "PooledObject.generated.h"
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPooledObjectDespawn, APooledObject*, PoolActor);
 
 UCLASS()
 class RETROFPS_API APooledObject : public AActor
@@ -15,12 +18,23 @@ public:
 	// Sets default values for this actor's properties
 	APooledObject();
 
+	FOnPooledObjectDespawn OnPooledObjectDespawn;
+
+	UFUNCTION(BlueprintCallable, Category = "Pooled Object")
+		void Deactivate();
+
+	void SetActive(bool IsActive);
+	void SetLifeSpan(float LifeTime);
+	void SetPoolIndex(int Index);
+
+	bool IsActive();
+	int GetPoolIndex();
+
 protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+	bool Active;
+	float LifeSpan = 0.0f;
+	int PoolIndex;
 
+	FTimerHandle LifeSpanTimer;
 };
