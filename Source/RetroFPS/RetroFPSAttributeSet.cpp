@@ -29,15 +29,25 @@ bool URetroFPSAttributeSet::PreGameplayEffectExecute(FGameplayEffectModCallbackD
 
     if (Data.EvaluatedData.Magnitude > 0)
     {
-        if (Data.EvaluatedData.Attribute == GetArmorAttribute() && GetArmor() + AbsoluteMagnitude >= RetroChar -> MaxArmor)
+        if (Data.EvaluatedData.Attribute == GetArmorAttribute())
         {
-            SetArmor(RetroChar -> MaxArmor);
-            return false;
+            if (GetArmor() <= 0)
+            {
+                SetArmor(0);
+            }
+            else if (GetArmor() + AbsoluteMagnitude >= RetroChar -> MaxArmor)
+            {
+                SetArmor(RetroChar -> MaxArmor);
+                return false;
+            }
         }
-        else if (Data.EvaluatedData.Attribute == GetHealthAttribute() && GetHealth() + AbsoluteMagnitude >= RetroChar -> MaxHealth)
+        else if (Data.EvaluatedData.Attribute == GetHealthAttribute())
         {
-            SetHealth(RetroChar -> MaxHealth);
-            return false;
+            if (GetArmor() <= 0)
+            {
+                Health.SetCurrentValue(Health.GetCurrentValue() + AbsoluteMagnitude); 
+                return false;
+            }      
         }
         else if (Data.EvaluatedData.Attribute == GetBulletsAttribute() && GetBullets() + AbsoluteMagnitude >= RetroChar -> MaxBullets)
         {
