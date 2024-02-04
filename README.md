@@ -1,11 +1,23 @@
 # RetroFPS
 
-This repository is a retro FPS game, inspired by Doom 1993 and Blood 1997.
+This repository is a retro FPS game similar to Doom 1993 and Blood 1997. 
 
-Developed with `Unreal Engine 5.3` and `Visual Studio 2022`
+Developed with `Unreal Engine 5` and `Visual Studio`
 
-## Clone the Repository
+## Download & Install
 
-Install `git` from the [official Git website](https://git-scm.com/) and run this command in the `git bash` command line.
+This repository uses Git LFS for storing large files.
 
-    git clone https://github.com/DylanBT928/RetroFPS.git <destination>
+Verify that you have Git LFS installed by running the following command.
+
+    git lfs --version
+
+If Git LFS is not installed, please download and run the installer [here](https://git-lfs.com/).
+
+### Install Git LFS hooks
+
+    git lfs install
+
+### Clone the Repository
+
+    git clone https://github.com/DylanBT928/RetroFPS.git
